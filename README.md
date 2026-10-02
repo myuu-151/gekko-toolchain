@@ -11,13 +11,6 @@ install.
 > devkitPro for help with this bundle. Report problems with it on this repo's
 > [Issues page](https://github.com/myuu-151/gekko-toolchain/issues).
 
-It is the exact set these are built and tested with:
-[Octave-libogc](https://github.com/myuu-151/Octave-Libogc),
-[Castle Crashers GC](https://github.com/myuu-151/Castle-Crashers-GC),
-[Sonic Pipe Dream (GameCube)](https://github.com/myuu-151/SonicPipeDream-GC) and
-[BJ2GC](https://github.com/myuu-151/BJ2GC). A disc built with it is byte for byte the program
-built with devkitPro's install of the same versions.
-
 ## Installing
 
 1. Download `gekko-toolchain-r49.2.zip` from [Releases](https://github.com/myuu-151/gekko-toolchain/releases).
