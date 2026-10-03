@@ -1,7 +1,7 @@
 # gekko-toolchain
 
 An unofficial, ready-to-use snapshot of the GameCube toolchain for Windows, in one zip: the
-compiler, libogc, libfat, the GameCube tools, and the `make` and shell its makefiles run with.
+compiler, libogc, libfat, the GameCube tools, GDB, and the `make` and shell its makefiles run with.
 Unzip it, run `Install.bat`, and GameCube projects build as they would with devkitPro's own
 install.
 
@@ -13,7 +13,7 @@ install.
 
 ## Installing
 
-1. Download `gekko-toolchain-r49.2.zip` from [Releases](https://github.com/myuu-151/gekko-toolchain/releases).
+1. Download the latest `gekko-toolchain-….zip` from [Releases](https://github.com/myuu-151/gekko-toolchain/releases).
 2. Unzip it to a folder **without spaces** in its path, such as `C:\gekko-toolchain`.
 3. Run **`Install.bat`** in it. It sets `DEVKITPRO` and `DEVKITPPC` (for your account, not the
    whole machine) to that folder. If devkitPro's own install is there already, it asks first.
@@ -26,9 +26,14 @@ The builders (`Build Octave.bat`, `Build CCGC.bat`, `Build Sonic Pipe Dream.bat`
 `DEVKITPRO`. From a terminal, put its `devkitPPC\bin`, `tools\bin` and `msys2\usr\bin` on `PATH`
 and run `make` as usual.
 
+**Debugging on a GameCube:** with a USB Gecko and a game built with libogc's debug stub
+(`DEBUG_Init(GDBSTUB_DEVICE_USB, slot)`, linked with `-ldb`), run
+`devkitPPC\bin\powerpc-eabi-gdb.exe game.elf`, then `target remote \\.\COM5` with the Gecko's
+COM port.
+
 ## What's in it
 
-About 430 MB unzipped, laid out as devkitPro's install is (`devkitPPC/`, `libogc/`, `tools/`,
+About 440 MB unzipped, laid out as devkitPro's install is (`devkitPPC/`, `libogc/`, `tools/`,
 `msys2/`), so makefiles and tools find everything where they expect it. Every package and version
 is in `VERSIONS.txt`.
 
@@ -41,10 +46,11 @@ is in `VERSIONS.txt`.
 | libfat | 2.1.0 | [libfat](https://github.com/myuu-151/libfat) |
 | gamecube-tools (`elf2dol`, `gxtexconv`, `gcdsptool`) | 1.0.7 | [gamecube-tools](https://github.com/myuu-151/gamecube-tools) ([upstream `v1.0.7`](https://github.com/devkitPro/gamecube-tools/tree/v1.0.7)) |
 | general-tools (`bin2s`, `raw2c`, ...) | 1.4.4 | [devkitPro/general-tools `v1.4.4`](https://github.com/devkitPro/general-tools/tree/v1.4.4) |
+| GDB (`powerpc-eabi-gdb`) | 14.1 | [GNU GDB 14.1](https://sourceware.org/gdb/), built by devkitPro (devkitPPC-gdb) |
 | MSYS2: `make`, `bash`, coreutils, `sed`, `grep`, `gawk`, `cygpath` ... | make 4.4.1, bash 5.3, runtime 3.6.6 | [msys2/MSYS2-packages](https://github.com/msys2/MSYS2-packages) |
 
 The `myuu-151` links are forks, kept so the sources stay available. Each part keeps its own
-licence, in `licenses/` (and `libogc/LICENSE`): GCC and binutils are GPL-3, with GCC's runtime
+licence, in `licenses/` (and `libogc/LICENSE`): GCC, binutils and GDB are GPL-3, with GCC's runtime
 library exception for what's linked into a program; newlib, libogc and libfat have their own
 permissive licences; MSYS2's packages are under theirs.
 

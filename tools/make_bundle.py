@@ -14,7 +14,7 @@ The bundle is laid out as devkitPro is, so the same makefiles and tools work fro
       licenses/    the licences of what's in it
       Install.bat, Uninstall.bat, README.md, VERSIONS.txt
 
-and zipped as gekko-toolchain-<devkitPPC version>.zip.
+and zipped as gekko-toolchain-<devkitPPC version>-<revision>.zip.
 """
 import os
 import re
@@ -24,10 +24,14 @@ import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[1]
+# The bundle's own revision of a devkitPPC version: 2 added GDB. The zip is named
+# gekko-toolchain-<devkitPPC version>-<revision>.zip from revision 2 on.
+REVISION = 2
 
 # devkitPro's packages for GameCube development ...
 GAMECUBE = ['devkitPPC', 'devkitppc-binutils', 'devkitppc-gcc', 'devkitppc-newlib', 'devkitppc-rules',
-            'devkitppc-crtls', 'libogc', 'libfat-ogc', 'gamecube-tools', 'general-tools']
+            'devkitppc-crtls', 'libogc', 'libfat-ogc', 'gamecube-tools', 'general-tools',
+            'devkitPPC-gdb']          # GDB, for debugging on a GameCube through a USB Gecko
 # ... and MSYS2's the makefiles run with (what these need comes with them)
 MSYS = ['msys2-runtime', 'make', 'bash', 'coreutils', 'sed', 'grep', 'gawk', 'findutils', 'which', 'diffutils']
 
@@ -136,7 +140,7 @@ def main():
     (root / 'VERSIONS.txt').write_text(versions + '\n', newline='\n')
 
     ppc = installed['devkitPPC'][0].split('-')[0]
-    archive = out / f'gekko-toolchain-{ppc}.zip'
+    archive = out / (f'gekko-toolchain-{ppc}.zip' if REVISION < 2 else f'gekko-toolchain-{ppc}-{REVISION}.zip')
     files = sorted(p for p in root.rglob('*') if p.is_file())
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for p in files:
