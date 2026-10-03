@@ -46,7 +46,7 @@ is in `VERSIONS.txt`.
 | libfat | 2.1.0 | [libfat](https://github.com/myuu-151/libfat) |
 | gamecube-tools (`elf2dol`, `gxtexconv`, `gcdsptool`) | 1.0.7 | [gamecube-tools](https://github.com/myuu-151/gamecube-tools) ([upstream `v1.0.7`](https://github.com/devkitPro/gamecube-tools/tree/v1.0.7)) |
 | general-tools (`bin2s`, `raw2c`, ...) | 1.4.4 | [devkitPro/general-tools `v1.4.4`](https://github.com/devkitPro/general-tools/tree/v1.4.4) |
-| GDB (`powerpc-eabi-gdb`) | 14.1 | [GNU GDB 14.1](https://sourceware.org/gdb/), built by devkitPro (devkitPPC-gdb) |
+| GDB (`powerpc-eabi-gdb`) | 14.1 | [binutils-gdb `gdb-14.1-release`](https://github.com/myuu-151/binutils-gdb/tree/gdb-14.1-release), built by devkitPro (devkitPPC-gdb) |
 | MSYS2: `make`, `bash`, coreutils, `sed`, `grep`, `gawk`, `cygpath` ... | make 4.4.1, bash 5.3, runtime 3.6.6 | [msys2/MSYS2-packages](https://github.com/msys2/MSYS2-packages) |
 
 The `myuu-151` links are forks, kept so the sources stay available. Each part keeps its own
